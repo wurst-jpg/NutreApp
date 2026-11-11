@@ -3,13 +3,25 @@ package com.example.NutreApp.models;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class Visualizacion {
+    @Id 
+    @GeneratedValue( strategy = GenerationType.UUID)
     private UUID id;
-    private LocalDate fecha_visualizaciones;
+
+    @Column (name ="fecha_visualizaciones", nullable = false, unique = false,length = 100)
+    private String fecha_visualizaciones;
+
+    @Column (name ="completado", nullable = false, unique = false)
     private boolean completado;
+
     public Visualizacion() {
     }
-    public Visualizacion(UUID id, LocalDate fecha_visualizaciones, boolean completado) {
+    public Visualizacion(UUID id, String fecha_visualizaciones, boolean completado) {
         this.id = id;
         this.fecha_visualizaciones = fecha_visualizaciones;
         this.completado = completado;
@@ -20,10 +32,10 @@ public class Visualizacion {
     public void setId(UUID id) {
         this.id = id;
     }
-    public LocalDate getFecha_visualizaciones() {
+    public String getFecha_visualizaciones() {
         return fecha_visualizaciones;
     }
-    public void setFecha_visualizaciones(LocalDate fecha_visualizaciones) {
+    public void setFecha_visualizaciones(String fecha_visualizaciones) {
         this.fecha_visualizaciones = fecha_visualizaciones;
     }
     public boolean isCompletado() {
